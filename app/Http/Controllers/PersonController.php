@@ -25,6 +25,12 @@ class PersonController extends Controller
      */
     public function store(Request $request)
     {
+        if ($request["secondName"] == null) {
+            $request["secondName"] = " ";
+        }
+        if ($request["secondLastName"] == null) {
+            $request["secondLastName"] = " ";
+        }
         return Person::create($request->all());
     }
 
@@ -48,6 +54,12 @@ class PersonController extends Controller
      */
     public function update(Request $request, $id)
     {
+        if ($request["secondName"] == null) {
+            $request["secondName"] = " ";
+        }
+        if ($request["secondLastName"] == null) {
+            $request["secondLastName"] = " ";
+        }
         $person = Person::find($id);
         $person->update($request->all());
         return $person;
